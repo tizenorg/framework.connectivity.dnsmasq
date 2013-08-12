@@ -38,6 +38,7 @@ pkg_check_modules(pkgs REQUIRED dbus-1)
 FOREACH(flag ${pkgs_CFLAGS})
 	SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} ${flag}")
 ENDFOREACH(flag)
+SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -fvisibility=hidden")
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS}")
 SET(CMAKE_C_FLAGS_DEBUG "-O0 -g")

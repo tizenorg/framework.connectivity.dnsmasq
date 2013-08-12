@@ -1,7 +1,7 @@
 Name:       dnsmasq
 Summary:    dnsmasq, DNS forwarder.
-Version:    2.57
-Release:    5
+Version:    2.57_8
+Release:    7
 Group:      TO_BE/FILLED_IN
 License:    TO BE FILLED IN
 Source0:    %{name}-%{version}.tar.gz
@@ -25,11 +25,20 @@ mkdir -p /opt/var/lib/misc
 rm -rf %{buildroot}
 %make_install
 
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/dnsmasq
+
 %files
 %manifest dnsmasq.manifest
 %{_bindir}/dnsmasq
+/usr/share/license/dnsmasq
 
 %changelog
+* Mon Aug 12 2013 Jaehyun Kim <jeik01.kim@samsung.com> 2.57-8
+- Patch for binary size reduction
+- License file is added to package
+- Send the indication for DHCP connection every time
+
 * Fri Nov 02 2012 Seungyoun Ju <sy39.ju@samsung.com> 2.57-5
 - Default manifest file is added
 
